@@ -6,9 +6,9 @@
         android:title="@string/kelas"
         android:icon="@drawable/baseline_class_24"   />
     <item
-        android:id="@+id/tugas"
-        android:title="@string/tugas"
-        android:icon="@drawable/baseline_assignment_24"  />
+        android:id="@+id/toDo"
+        android:title="@string/to_do"
+        android:icon="@drawable/baseline_checklist_rtl_24"  />
     <item
         android:id="@+id/settings"
         android:title="@string/settings"

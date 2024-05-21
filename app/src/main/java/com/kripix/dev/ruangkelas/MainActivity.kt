@@ -7,6 +7,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.kripix.dev.ruangkelas.databinding.ActivityMainBinding
+import com.kripix.dev.ruangkelas.ui.fragment.KelasFragment
+import com.kripix.dev.ruangkelas.ui.fragment.PengaturanFragment
+import com.kripix.dev.ruangkelas.ui.fragment.TodoFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.kelas -> replaceFragment(KelasFragment())
-                R.id.tugas -> replaceFragment(TugasFragment())
+                R.id.toDo -> replaceFragment(TodoFragment())
                 R.id.settings -> replaceFragment(PengaturanFragment())
             }
             true

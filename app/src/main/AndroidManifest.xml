@@ -5,22 +5,42 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:hardwareAccelerated="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ruang_kelas_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ruang_kelas_icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.RuangKelas"
         tools:targetApi="31">
-        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
+        <activity
+            android:name=".ui.activity.LatihanMultimediaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LatihanSharedPreferenceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.DetailPertemuanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.RuangActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.TambahKelasActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
-            tools:replace="screenOrientation"/>
+            tools:replace="screenOrientation" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

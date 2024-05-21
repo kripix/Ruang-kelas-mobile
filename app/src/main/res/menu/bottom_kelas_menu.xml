@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ruang_kelas"
+        android:title="@string/ruang_kelas"
+        android:icon="@drawable/baseline_space_dashboard_24"   />
+    <item
+        android:id="@+id/tugas"
+        android:title="@string/tugas"
+        android:icon="@drawable/baseline_assignment_24"  />
+    <item
+        android:id="@+id/anggota"
+        android:title="@string/anggota"
+        android:icon="@drawable/baseline_people_alt_24"   />
+</menu>

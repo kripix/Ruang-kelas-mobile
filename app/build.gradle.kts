@@ -47,15 +47,19 @@ android {
 }
 
 dependencies {
+    implementation (libs.picasso)
     implementation ("com.journeyapps:zxing-android-embedded:4.2.0")
     implementation ("com.google.zxing:core:3.4.1")
     implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation (libs.android.shape.imageview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
