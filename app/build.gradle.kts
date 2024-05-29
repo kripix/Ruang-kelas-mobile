@@ -48,9 +48,6 @@ android {
 
 dependencies {
     implementation (libs.picasso)
-    implementation ("com.journeyapps:zxing-android-embedded:4.2.0")
-    implementation ("com.google.zxing:core:3.4.1")
-    implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation (libs.android.shape.imageview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -63,4 +60,15 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation ("com.journeyapps:zxing-android-embedded:4.2.0")
+    implementation ("com.google.zxing:core:3.4.1")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    implementation ("com.squareup.retrofit2:converter-gson:2.11.0")
+    implementation ("com.squareup.retrofit2:retrofit:(2.11.0)")
+
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp")
+    implementation("com.squareup.okhttp3:logging-interceptor")
 }

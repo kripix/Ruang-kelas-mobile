@@ -11,10 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="15dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/black"
         android:layout_margin="10dp"
         android:clickable="true"
         app:cardElevation="4dp"
-
         >
 
         <LinearLayout
@@ -34,7 +35,7 @@
                     android:scaleType="centerCrop"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
                 <TextView
-                    android:id="@+id/kelas_name"
+                    android:id="@+id/kelas_grade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="MI-2E"
@@ -47,7 +48,7 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/kelas_title"
+                android:id="@+id/kelas_nama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Title"

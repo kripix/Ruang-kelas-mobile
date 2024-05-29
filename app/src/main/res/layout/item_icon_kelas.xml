@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/icon_kelas_card"
@@ -17,8 +17,8 @@
 
         <ImageView
             android:id="@+id/icon_kelas_img"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
