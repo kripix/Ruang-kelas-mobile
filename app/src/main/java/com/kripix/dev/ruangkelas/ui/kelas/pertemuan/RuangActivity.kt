@@ -1,27 +1,38 @@
 package com.kripix.dev.ruangkelas.ui.kelas.pertemuan
 
+import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kripix.dev.ruangkelas.R
+import com.kripix.dev.ruangkelas.data.api.kelas.KelasApiRetrofit
+import com.kripix.dev.ruangkelas.data.model.KELAS_DATA_EXTRA
 import com.kripix.dev.ruangkelas.databinding.ActivityRuangBinding
-import com.kripix.dev.ruangkelas.data.kelas.KELAS_ID_EKSTRA
-import com.kripix.dev.ruangkelas.data.kelas.Kelas
-import com.kripix.dev.ruangkelas.data.kelas.PERTEMUAN_ID_EKSTRA
-import com.kripix.dev.ruangkelas.data.kelas.Pertemuan
-import com.kripix.dev.ruangkelas.data.kelas.kelasList
-import com.kripix.dev.ruangkelas.data.kelas.pertemuanAdapter
-import com.kripix.dev.ruangkelas.data.kelas.pertemuanClickListener
-import com.kripix.dev.ruangkelas.ui.kelas.pertemuan.detail.DetailPertemuanActivity
-import com.kripix.dev.ruangkelas.ui.kelas.pertemuan.detail.LatihanMultimediaActivity
-import com.kripix.dev.ruangkelas.ui.kelas.pertemuan.detail.LatihanSharedPreferenceActivity
+import com.kripix.dev.ruangkelas.data.model.KELAS_ID_EKSTRA
+import com.kripix.dev.ruangkelas.data.model.KelasModel
+import com.kripix.dev.ruangkelas.data.model.TambahKelasModel
+import com.kripix.dev.ruangkelas.ui.kelas.pertemuan.ubah.UbahKelasActivity
+import com.squareup.picasso.Picasso
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class RuangActivity : AppCompatActivity(), pertemuanClickListener {
+class RuangActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRuangBinding
+    private lateinit var kelas: KelasModel.Data
+    private val api by lazy { KelasApiRetrofit().endpoint }
+
+    companion object {
+        private const val REQUEST_EDIT_KELAS = 1
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,54 +44,102 @@ class RuangActivity : AppCompatActivity(), pertemuanClickListener {
             insets
         }
 
-        val kelasID = intent.getIntExtra(KELAS_ID_EKSTRA, -1)
-        val kelas = kelasById(kelasID)
+        validation()
+        setupListeners()
+    }
 
+    private fun setupListeners() {
+        binding.btnBack.setOnClickListener { finish() }
+        binding.btnEdit.setOnClickListener { editKelas() }
+        binding.btnMore.setOnClickListener { showPopupMenu() }
+    }
 
-        if (kelas != null)
-        {
-            binding.kelasImg.setImageResource(kelas.img)
-            binding.kelasCreator.text = kelas.creator
-            binding.kelasTitle.text = kelas.kelas
-
-            val pertemuanList = kelas.pertemuanList
-
-            binding.rvRuang.apply {
-                layoutManager = GridLayoutManager(applicationContext, 5)
-                adapter = pertemuanAdapter(pertemuanList,this@RuangActivity)
+    fun showPopupMenu() {
+        val popupMenu = PopupMenu(this, binding.btnMore)
+        popupMenu.menuInflater.inflate(R.menu.pop_menu_ruang, popupMenu.menu)
+        popupMenu.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.hapus -> {
+                    showConfirmationDialog()
+                    true // Return true to indicate that the menu item click is handled
+                }
+                else -> false // Return false for unhandled menu items
             }
         }
-
-
+        popupMenu.show()
     }
 
-    private fun kelasById (kelasID: Int): Kelas? {
-        for (kelas in kelasList) {
-            if (kelas.id == kelasID)
-                return kelas
+    fun showConfirmationDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Konfirmasi")
+        builder.setMessage("Apakah Anda yakin ingin menghapus?")
+        builder.setPositiveButton("Ya") { dialog, which ->
+            deleteKelas()
         }
-        return null
+        builder.setNegativeButton("Tidak") { dialog, which ->
+            // Do nothing, close the dialog
+        }
+        val dialog = builder.create()
+        dialog.show()
     }
 
-    override fun onClick(pertemuan: Pertemuan) {
+    fun deleteKelas() {
+        api.delete(kelas.id).enqueue(object : Callback<TambahKelasModel> {
+            override fun onResponse(call: Call<TambahKelasModel>, response: Response<TambahKelasModel>) {
+                if (response.isSuccessful) {
+                    val submit = response.body()
+                    Toast.makeText(applicationContext, submit!!.message, Toast.LENGTH_SHORT).show()
+                    finish()
+                } else {
+                    // Handle unsuccessful response here if needed
+                }
+            }
 
-
-        if(pertemuan.id == 9){
-            val intent = Intent(applicationContext, LatihanSharedPreferenceActivity::class.java)
-            intent.putExtra(PERTEMUAN_ID_EKSTRA, pertemuan.id)
-            startActivity(intent)
-        } else if(pertemuan.id == 10){
-            val intent = Intent(applicationContext, LatihanMultimediaActivity::class.java)
-            intent.putExtra(PERTEMUAN_ID_EKSTRA, pertemuan.id)
-            startActivity(intent)
-        }
-
-        else {
-            val intent = Intent(applicationContext, DetailPertemuanActivity::class.java)
-            intent.putExtra(PERTEMUAN_ID_EKSTRA, pertemuan.id)
-            startActivity(intent)
-        }
-
+            override fun onFailure(call: Call<TambahKelasModel>, t: Throwable) {
+                // Handle failure here if needed
+            }
+        })
     }
 
+
+
+    private fun validation(){
+        val kelasData = intent.getSerializableExtra(KELAS_DATA_EXTRA) as KelasModel.Data
+        if (kelasData != null) {
+            kelas = kelasData
+            displayKelasInfo(kelas)
+        } else {
+            Toast.makeText(this, "Failed to retrieve class data", Toast.LENGTH_SHORT).show()
+            finish()
+        }
+    }
+
+    private fun displayKelasInfo(kelas: KelasModel.Data) {
+        binding.kelasGrade.text = kelas.nama_grade
+        binding.kelasTitle.text = kelas.nama_kelas
+        binding.kelasCreator.text = kelas.wali_kelas
+        binding.kelasDeskripsi.text = kelas.deskripsi
+        Picasso.get().load(kelas.icon_kelas).into(binding.kelasImg)
+    }
+
+    private fun editKelas() {
+        val intent = Intent(this, UbahKelasActivity::class.java).apply {
+            putExtra(KELAS_ID_EKSTRA, kelas.id)
+            putExtra(KELAS_DATA_EXTRA, kelas)
+        }
+        startActivityForResult(intent, REQUEST_EDIT_KELAS)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_EDIT_KELAS && resultCode == Activity.RESULT_OK) {
+            data?.let {
+                val updatedKelas = it.getSerializableExtra(KELAS_DATA_EXTRA) as? KelasModel.Data
+                updatedKelas?.let { kelas ->
+                    this.kelas = kelas
+                    displayKelasInfo(kelas)
+                }
+            }
+        }
+    }
 }

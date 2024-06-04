@@ -7,7 +7,14 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
 
     <application
         android:allowBackup="true"
@@ -16,13 +23,18 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ruang_kelas_icon"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ruang_kelas_icon"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.RuangKelas"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.kelas.tambah.PhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.kelas.pertemuan.ubah.UbahKelasActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.kelas.pertemuan.detail.LatihanMultimediaActivity"
             android:exported="false" />
@@ -46,7 +58,7 @@
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.kelas.MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -55,6 +67,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

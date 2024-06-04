@@ -5,6 +5,7 @@ data class IconKelasModel (
 ) {
     data class Data (
         val id: Int,
-        val icon_kelas: String?
+        val icon_kelas: String?,
+        val isSelected: Boolean = false
     )
 }

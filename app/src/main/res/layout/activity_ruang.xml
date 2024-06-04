@@ -18,13 +18,39 @@
         android:background="@color/white">
 
         <ImageButton
-            android:id="@+id/sidebar_button"
+            android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/baseline_menu_24" />
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <TextView
+            android:id="@+id/kelas_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:text="Grade"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/btn_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="end"
+            android:layout_marginEnd="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_more_vert_24" />
     </LinearLayout>
 
 
@@ -42,10 +68,10 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/kelas_card"
                 android:layout_width="match_parent"
-                android:layout_height="198dp"
+                android:layout_height="wrap_content"
                 android:clickable="true"
                 app:cardCornerRadius="15dp"
-                app:cardElevation="4dp">
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -55,20 +81,20 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="wrap_content">
 
                         <ImageView
                             android:id="@+id/kelas_img"
                             android:layout_width="match_parent"
-                            android:layout_height="156dp"
+                            android:layout_height="128dp"
                             android:adjustViewBounds="true"
                             android:scaleType="centerCrop"
-                            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                            tools:src="@drawable/icon_matematika_1" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="120dp"
+                            android:layout_marginTop="92dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -77,7 +103,8 @@
                                 android:layout_marginStart="16dp"
                                 android:adjustViewBounds="true"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/pf_icon_lk4" />
+                                android:background="@drawable/circle_purple"
+                                android:src="@drawable/pf_icon_lk4"/>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -109,25 +136,71 @@
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
+                    <TextView
+                        android:id="@+id/kelas_deskripsi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:paddingStart="10dp"
+                        android:text="Deskripsi"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginBottom="4dp">
+
+                        <Button
+                            android:id="@+id/btn_edit"
+                            android:layout_width="156dp"
+                            android:layout_height="42dp"
+                            android:text="Ubah"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:layout_marginEnd="10dp"/>
+                        <Button
+                            android:id="@+id/btn_share"
+                            android:layout_width="156dp"
+                            android:layout_height="42dp"
+                            android:text="Bagikan"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <TextView
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Daftar Pertemuan"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:background="@drawable/rounded_background_grey"
+                android:elevation="4dp">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Daftar Pertemuan"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_ruang"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_ruang"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        />
+                </LinearLayout>
+            </FrameLayout>
+
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

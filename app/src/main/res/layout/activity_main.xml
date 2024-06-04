@@ -1,29 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.kelas.MainActivity"
+    android:orientation="vertical">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_height="56dp"
+        android:background="@color/white"
+        android:elevation="7dp"
+        android:orientation="horizontal">
 
-    </FrameLayout>
+        <ImageButton
+            android:id="@+id/btn_menu"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_menu_24"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        <TextView
+            android:id="@+id/nama_navbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:paddingStart="10dp"
+            android:text="Krisna Hadi"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btn_bg"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_color_lens_24" />
+
+        <ImageButton
+            android:id="@+id/btn_notif"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_notifications_24" />
+
+        <ImageButton
+            android:id="@+id/btn_add_kelas"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_block"
+            android:src="@drawable/baseline_add_24" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_menu" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageView
+                    android:id="@+id/background_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="168dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/bg_0" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_music_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Selamat Datang"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_music_source"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="By"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/title_kelas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="8dp"
+                android:text="Kelas"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <SearchView
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rounded_block"/>
+
+<!--            <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_marginHorizontal="10dp"-->
+<!--                    android:layout_marginVertical="8dp"-->
+<!--                    android:background="@drawable/rounded_block"-->
+<!--                    >-->
+
+<!--&lt;!&ndash;                    <HorizontalScrollView&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="match_parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="42dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginHorizontal="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginVertical="8dp">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/btn_terbaru"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="111dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_gravity="center_vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginEnd="4dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:backgroundTint="@color/gray"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="Terbaru" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/btn_terlama"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="111dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_gravity="center_vertical"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginEnd="4dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:backgroundTint="@color/gray"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="Terlama" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/btn_favorit"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="111dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginEnd="4dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:backgroundTint="@color/gray"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="Favorit" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/btn_dibuat"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginEnd="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:backgroundTint="@color/gray"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="Dibuat" />&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:id="@+id/btn_diikuti"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:layout_marginEnd="8dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:backgroundTint="@color/gray"&ndash;&gt;-->
+<!--&lt;!&ndash;                        android:text="Diikuti" />&ndash;&gt;-->
+<!--                    <EditText-->
+<!--                        android:id="@+id/etSearch"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:ems="10"-->
+<!--                        android:inputType="text"-->
+<!--                        android:text="Name" />-->
+
+<!--                    <ImageButton-->
+<!--                        android:id="@+id/btnSearch"-->
+<!--                        android:layout_width="46dp"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="1"-->
+<!--                        app:srcCompat="@drawable/baseline_search_24" />-->
+<!--                </LinearLayout>-->
+<!--            </HorizontalScrollView>-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginHorizontal="7dp"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_icon_kelas" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_kelas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginHorizontal="7dp"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_card_kelas" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -10,12 +10,12 @@
         android:id="@+id/kelas_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="8dp"
         app:strokeWidth="1dp"
         app:strokeColor="@color/black"
-        android:layout_margin="10dp"
+        android:layout_margin="3dp"
         android:clickable="true"
-        app:cardElevation="4dp"
+        app:cardElevation="2dp"
         >
 
         <LinearLayout
@@ -29,22 +29,23 @@
                 android:layout_height="wrap_content">
                 <ImageView
                     android:id="@+id/kelas_img"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="114dp"
+                    android:layout_height="114dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
                     tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
                 <TextView
                     android:id="@+id/kelas_grade"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="MI-2E"
+                    android:background="@color/trp50"
                     android:gravity="right"
-                    android:paddingRight="16dp"
-                    android:textSize="20sp"
+                    android:paddingHorizontal="8dp"
+                    android:text="MI-2E"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:background="@color/trp50"/>
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
 
             <TextView
@@ -62,11 +63,12 @@
                 android:id="@+id/kelas_creator"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:text="Creator"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textColor="@android:color/black"
                 android:gravity="center"
-                android:lines="2"/>
+                android:lines="1"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

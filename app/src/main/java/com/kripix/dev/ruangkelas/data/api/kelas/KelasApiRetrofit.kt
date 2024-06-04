@@ -16,7 +16,7 @@ class KelasApiRetrofit {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.210.92/ruangKelas/api/kelas/")
+                .baseUrl("http://192.168.100.4/ruangKelas/api/kelas/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

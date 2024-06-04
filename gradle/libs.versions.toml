@@ -3,7 +3,7 @@ agp = "8.4.1"
 androidGifDrawable = "1.4.2"
 androidShapeImageview = "0.9.3"
 animationGraphics = "1.6.7"
-kotlin = "1.9.0"
+kotlin = "2.0.0"
 coreKtx = "1.13.0"
 junit = "4.13.2"
 junitVersion = "1.1.5"
@@ -15,10 +15,12 @@ constraintlayout = "2.1.4"
 material3Android = "1.2.1"
 okhttpBom = "4.12.0"
 picasso = "2.71828"
+quickpermissionsKotlin = "0.4.1"
 retrofit = "(insert latest version)"
 zxingAndroidEmbedded = "4.3.0"
 navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
+volley = "1.2.1"
 
 [libraries]
 android-gif-drawable = { module = "pl.droidsonroids.gif:android-gif-drawable", version.ref = "androidGifDrawable" }
@@ -38,12 +40,15 @@ androidx-material3-android = { group = "androidx.compose.material3", name = "mat
 okhttp = { module = "com.squareup.okhttp3:okhttp" }
 okhttp-bom = { module = "com.squareup.okhttp3:okhttp-bom", version.ref = "okhttpBom" }
 picasso = { module = "com.squareup.picasso:picasso", version.ref = "picasso" }
+quickpermissions-kotlin = { module = "com.github.quickpermissions:quickpermissions-kotlin", version.ref = "quickpermissionsKotlin" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 zxing-android-embedded = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingAndroidEmbedded" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
